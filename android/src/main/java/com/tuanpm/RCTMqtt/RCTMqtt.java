@@ -145,6 +145,7 @@ public class RCTMqtt implements MqttCallbackExtended {
             mqttOptions.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1);
         }
 
+	mqttOptions.setCleanSession(options.getBoolean("clean"));
         mqttOptions.setKeepAliveInterval(options.getInt("keepalive"));
         mqttOptions.setMaxInflight(1000);
         mqttOptions.setConnectionTimeout(10);
