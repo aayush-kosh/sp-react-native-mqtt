@@ -37,6 +37,8 @@ export class IMqttClient {
 	publish(topic: string, payload: string, qos: QoS, retain: boolean): void;
 	reconnect(): void;
 	isConnected(): Promise<boolean>;
+	getTopics():Promise<string>;
+	isSubbed():Promise<boolean>;
 }
 
 declare namespace mqtt {
