@@ -30,6 +30,7 @@ export class IMqttClient {
 		topic: string;
 	}) => void): void
 	on(event: 'connect', cb: (msg: { reconnect: boolean; }) => void): void
+	on(event:'subscribe', cb:(msg:string)=>void):void
 	connect(): void;
 	disconnect(): void;
 	subscribe(topic: string, qos: QoS): void;
@@ -37,6 +38,8 @@ export class IMqttClient {
 	publish(topic: string, payload: string, qos: QoS, retain: boolean): void;
 	reconnect(): void;
 	isConnected(): Promise<boolean>;
+	getTopics():Promise<string>;
+	isSubbed():Promise<boolean>;
 }
 
 declare namespace mqtt {
