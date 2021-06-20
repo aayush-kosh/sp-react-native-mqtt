@@ -331,6 +331,10 @@ public class RCTMqtt implements MqttCallbackExtended {
                 public void onSuccess(IMqttToken asyncActionToken) {
                     // The message was published
                     log("Subscribe success");
+		    WritableMap params = Arguments.createMap();
+                    params.putString("event", "subscribe");
+                    params.putString("message", topic);
+                    sendEvent(reactContext, "mqtt_events", params);
                 }
 
                 @Override
